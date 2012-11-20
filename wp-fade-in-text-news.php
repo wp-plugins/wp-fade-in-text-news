@@ -5,7 +5,7 @@ Plugin Name: WP fade in text news
 Plugin URI: http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 Description: Everybody loves fading in and out; this plugin will create the fade-in and out effect in the text. It is an excellent way to transition between announcements.
 Author: Gopi.R
-Version: 8.0
+Version: 9.0
 Author URI: http://www.gopiplus.com/work/
 Donate link: http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 Tags: Wordpress, plugin, widget, fadein, fade-in, fade in, announcement, text
@@ -18,7 +18,6 @@ define("WP_FadeIn_TABLE", $wpdb->prefix . "FadeInText_plugin");
 
 function FadeIn() 
 {
-	
 	global $wpdb;
 	$FadeIn_Arr = "";
 	$FadeIn_FadeOut = get_option('FadeIn_FadeOut');
@@ -33,7 +32,6 @@ function FadeIn()
 	if(!is_numeric($FadeIn_Fade)){ $FadeIn_Fade = 0; } 
 	if(!is_numeric($FadeIn_FadeStep)){ $FadeIn_FadeStep = 3; } 
 	if(!is_numeric($FadeIn_FadeWait)){ $FadeIn_FadeWait = 3000; } 
-	
 	
 	$sSql = "select FadeIn_text,FadeIn_link from ".WP_FadeIn_TABLE." where FadeIn_status='YES' and FadeIn_group='widget'";
 	$sSql = $sSql . "ORDER BY FadeIn_order";
@@ -59,7 +57,6 @@ function FadeIn()
 	
 	?>
     <script type="text/javascript" language="javascript">
-	
 	function FadeIn_SetFadeLinks() 
 	{
 		<?php echo $FadeIn_Arr ?>
@@ -130,7 +127,7 @@ function FadeIn_install()
 
 function FadeIn_control() 
 {
-	echo '<p>Fade in text news.<br> To change the setting/To manage content goto Fade in text news link under Setting menu.';
+	echo '<p>To change the setting ';
 	echo ' <a href="options-general.php?page=wp-fade-in-text-news/wp-fade-in-text-news.php">';
 	echo 'click here</a></p>';
 }

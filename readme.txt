@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/
 Plugin URI: http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 Tags:  fadein, fade-in, fade in, news, plugin, widget, wordpress
 Requires at least: 3.0
-Tested up to: 3.4.1
-Stable tag: 8.0
+Tested up to: 3.5
+Stable tag: 9.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -120,7 +120,11 @@ Slight change in the short code, Please find the new short code for your gallery
 
 =Version 8.0=
 
-New demo link, www.gopiplus.com
+New demo link, http://www.gopiplus.com
+
+=Version 9.0=
+
+Tested up to 3.5
 
 == Changelog ==
 
@@ -148,4 +152,8 @@ Slight change in the short code, Please find the new short code for your gallery
 
 =Version 8.0=
 
-New demo link, www.gopiplus.com
+New demo link, http://www.gopiplus.com
+
+=Version 9.0=
+
+Tested up to 3.5
