@@ -5,7 +5,7 @@ Plugin Name: WP fade in text news
 Plugin URI: http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 Description: Everybody loves fading in and out; this plugin will create the fade-in and out effect in the text. It is an excellent way to transition between announcements.
 Author: Gopi.R
-Version: 9.0
+Version: 10.0
 Author URI: http://www.gopiplus.com/work/
 Donate link: http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 Tags: Wordpress, plugin, widget, fadein, fade-in, fade in, announcement, text
@@ -15,6 +15,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 global $wpdb, $wp_version;
 define("WP_FadeIn_TABLE", $wpdb->prefix . "FadeInText_plugin");
+define("WP_FadeIn_UNIQUE_NAME", "FadeIn");
+define("WP_FadeIn_TITLE", "WP fade in text news");
+define('WP_FadeIn_LINK', 'Check official website for more information <a target="_blank" href="http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/">click here</a>');
+define('WP_FadeIn_FAV', 'http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/');
 
 function FadeIn() 
 {
@@ -26,6 +30,7 @@ function FadeIn()
 	$FadeIn_FadeStep = get_option('FadeIn_FadeStep');
 	$FadeIn_FadeWait = get_option('FadeIn_FadeWait');
 	$FadeIn_bFadeOutt = get_option('FadeIn_bFadeOutt');
+	$FadeIn_group = get_option('FadeIn_group');
 	
 	if(!is_numeric($FadeIn_FadeOut)){ $FadeIn_FadeOut = 255; } 
 	if(!is_numeric($FadeIn_FadeIn)){ $FadeIn_FadeIn = 0; } 
@@ -33,7 +38,11 @@ function FadeIn()
 	if(!is_numeric($FadeIn_FadeStep)){ $FadeIn_FadeStep = 3; } 
 	if(!is_numeric($FadeIn_FadeWait)){ $FadeIn_FadeWait = 3000; } 
 	
-	$sSql = "select FadeIn_text,FadeIn_link from ".WP_FadeIn_TABLE." where FadeIn_status='YES' and FadeIn_group='widget'";
+	$sSql = "select FadeIn_text,FadeIn_link from ".WP_FadeIn_TABLE." where FadeIn_status='YES'";
+	if($FadeIn_group <> "")
+	{
+		$sSql = $sSql . " and FadeIn_group='".$FadeIn_group."'";
+	}
 	$sSql = $sSql . "ORDER BY FadeIn_order";
 	
 	$data = $wpdb->get_results($sSql);
@@ -103,15 +112,15 @@ function FadeIn_install()
 			  PRIMARY KEY  (`FadeIn_id`) )
 			");
 		$iIns = "INSERT INTO `". WP_FadeIn_TABLE . "` (`FadeIn_text`,`FadeIn_link`, `FadeIn_order`, `FadeIn_status`, `FadeIn_group`, `FadeIn_date`)"; 
-		$sSql = $iIns . "VALUES ('Everybody loves fading in and out; this wp fade in text news plugin will create the fade-in and out effect in the text.','#', '1', 'YES', 'sample', '0000-00-00 00:00:00');";
+		$sSql = $iIns . "VALUES ('Lorem Ipsum is simply dummy text of the printing and typesetting industry.','#', '1', 'YES', 'SAMPLE', '0000-00-00 00:00:00');";
 		$wpdb->query($sSql);
-		$sSql = $iIns . "VALUES ('It is an superb excellent way to transition between announcements. Admin can add more announcement using plugin text management.','#', '2', 'YES', 'sample', '0000-00-00 00:00:00');";
+		$sSql = $iIns . "VALUES ('Lorem Ipsum is simply dummy text of the printing and typesetting industry.','#', '2', 'YES', 'SAMPLE', '0000-00-00 00:00:00');";
 		$wpdb->query($sSql);
-		$sSql = $iIns . "VALUES ('Only website admin and the user have the administrator privilege can see and change the setting in the website administration area.','#', '3', 'YES', 'sample', '0000-00-00 00:00:00');";
+		$sSql = $iIns . "VALUES ('Lorem Ipsum is simply dummy text of the printing and typesetting industry.','#', '3', 'YES', 'SAMPLE', '0000-00-00 00:00:00');";
 		$wpdb->query($sSql);
-		$sSql = $iIns . "VALUES ('Everybody loves fading in and out; this wp fade in text news plugin will create the fade-in and out effect in the text.','#', '4', 'YES', 'widget', '0000-00-00 00:00:00');";
+		$sSql = $iIns . "VALUES ('Lorem Ipsum is simply dummy text of the printing and typesetting industry.','#', '4', 'YES', 'WIDGET', '0000-00-00 00:00:00');";
 		$wpdb->query($sSql);
-		$sSql = $iIns . "VALUES ('Only website admin and the user have the administrator privilege can see and change the setting in the website administration area.','#', '5', 'YES', 'widget', '0000-00-00 00:00:00');";
+		$sSql = $iIns . "VALUES ('Lorem Ipsum is simply dummy text of the printing and typesetting industry.','#', '5', 'YES', 'WIDGET', '0000-00-00 00:00:00');";
 		$wpdb->query($sSql);
 	}
 	
@@ -123,13 +132,13 @@ function FadeIn_install()
 	add_option('FadeIn_FadeStep', "3");
 	add_option('FadeIn_FadeWait', "3000");
 	add_option('FadeIn_bFadeOutt', "true");
+	add_option('FadeIn_group', "WIDGET");
 }
 
 function FadeIn_control() 
 {
-	echo '<p>To change the setting ';
-	echo ' <a href="options-general.php?page=wp-fade-in-text-news/wp-fade-in-text-news.php">';
-	echo 'click here</a></p>';
+	echo '<p>To change the setting <a href="options-general.php?page=wp-fade-in-text-news">click here</a></p>';
+	echo WP_FadeIn_LINK;
 }
 
 function FadeIn_widget($args) 
@@ -145,74 +154,22 @@ function FadeIn_widget($args)
 function FadeIn_admin_options() 
 {
 	global $wpdb;
-	?>
-<div class="wrap">
-  <h2>Fade in text news</h2>
-</div>
-<?php
-	$FadeIn_Title = get_option('FadeIn_Title');
-	$FadeIn_FadeOut = get_option('FadeIn_FadeOut');
-	$FadeIn_FadeIn = get_option('FadeIn_FadeIn');
-	$FadeIn_Fade = get_option('FadeIn_Fade');
-	
-	$FadeIn_FadeStep = get_option('FadeIn_FadeStep');
-	$FadeIn_FadeWait = get_option('FadeIn_FadeWait');
-	//$FadeIn_bFadeOutt = get_option('FadeIn_bFadeOutt');
-	
-	if (@$_POST['FadeIn_submit']) 
+	$current_page = isset($_GET['ac']) ? $_GET['ac'] : '';
+	switch($current_page)
 	{
-		$FadeIn_Title = stripslashes($_POST['FadeIn_Title']);
-		$FadeIn_FadeOut = stripslashes($_POST['FadeIn_FadeOut']);
-		$FadeIn_FadeIn = stripslashes($_POST['FadeIn_FadeIn']);
-		$FadeIn_Fade = stripslashes($_POST['FadeIn_Fade']);
-		
-		$FadeIn_FadeStep = stripslashes($_POST['FadeIn_FadeStep']);
-		$FadeIn_FadeWait = stripslashes($_POST['FadeIn_FadeWait']);
-		//$FadeIn_bFadeOutt = stripslashes($_POST['FadeIn_bFadeOutt']);
-		
-		update_option('FadeIn_Title', $FadeIn_Title );
-		update_option('FadeIn_FadeOut', $FadeIn_FadeOut );
-		update_option('FadeIn_FadeIn', $FadeIn_FadeIn );
-		update_option('FadeIn_Fade', $FadeIn_Fade );
-		
-		update_option('FadeIn_FadeStep', $FadeIn_FadeStep );
-		update_option('FadeIn_FadeWait', $FadeIn_FadeWait );
-		//update_option('FadeIn_bFadeOutt', $FadeIn_bFadeOutt );
+		case 'edit':
+			include('pages/content-management-edit.php');
+			break;
+		case 'add':
+			include('pages/content-management-add.php');
+			break;
+		case 'set':
+			include('pages/widget-setting.php');
+			break;
+		default:
+			include('pages/content-management-show.php');
+			break;
 	}
-	
-	?>
-<form name="FadeIn_form" method="post" action="">
-  <?php
-	echo '<p>Title:<br><input  style="width: 200px;" type="text" value="';
-	echo $FadeIn_Title . '" name="FadeIn_Title" id="FadeIn_Title" /></p>';
-	
-	echo '<p>Fade Out:<br><input  style="width: 100px;" type="text" value="';
-	echo $FadeIn_FadeOut . '" name="FadeIn_FadeOut" id="FadeIn_FadeOut" /></p>';
-
-	echo '<p>Fade In:<br><input  style="width: 100px;" type="text" value="';
-	echo $FadeIn_FadeIn . '" name="FadeIn_FadeIn" id="FadeIn_FadeIn" /></p>';
-
-	echo '<p>Fade:<br><input  style="width: 100px;" type="text" value="';
-	echo $FadeIn_Fade . '" name="FadeIn_Fade" id="FadeIn_Fade" /> ';
-	
-	echo '<p>Fade Step:<br><input  style="width: 100px;" type="text" value="';
-	echo $FadeIn_FadeStep . '" name="FadeIn_FadeStep" id="FadeIn_FadeStep" /></p>';
-	
-	echo '<p>Fade Wait:<br><input  style="width: 100px;" type="text" value="';
-	echo $FadeIn_FadeWait . '" name="FadeIn_FadeWait" id="FadeIn_FadeWait" /></p>';
-	
-	echo '<input name="FadeIn_submit" id="FadeIn_submit" lang="publish" class="button-primary" value="Update Setting" type="Submit" />';
-	
-	?>
-</form>
-<table width="100%">
-  <tr>
-    <td align="right"><input name="text_management" lang="text_management" class="button-primary" onClick="location.href='options-general.php?page=wp-fade-in-text-news/content-management.php'" value="Go to - Text Management" type="button" />
-      <input name="setting_management" lang="setting_management" class="button-primary" onClick="location.href='options-general.php?page=wp-fade-in-text-news/wp-fade-in-text-news.php'" value="Go to - Fadein Setting" type="button" /></td>
-  </tr>
-</table>
-<?php include_once("help.php"); ?>
-<?php
 }
 
 add_shortcode( 'fadein-text', 'FadeIn_Show_shortcode' );
@@ -305,8 +262,8 @@ function FadeIn_add_to_menu()
 {
 	if (is_admin()) 
 	{
-		add_options_page('Fade in text news', 'Fade in text news', 'manage_options', __FILE__, 'FadeIn_admin_options' );
-		add_options_page('Fade in text news', '', 'manage_options', "wp-fade-in-text-news/content-management.php",'' );
+		add_options_page('Fade in text news', 'Fade in text news', 'manage_options', 'wp-fade-in-text-news', 'FadeIn_admin_options' );
+		//add_options_page('Fade in text news', '', 'manage_options', "wp-fade-in-text-news/content-management.php",'' );
 	}
 }
 

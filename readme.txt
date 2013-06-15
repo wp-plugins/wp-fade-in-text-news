@@ -4,9 +4,9 @@ Donate link: http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-
 Author URI: http://www.gopiplus.com/work/
 Plugin URI: http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 Tags:  fadein, fade-in, fade in, news, plugin, widget, wordpress
-Requires at least: 3.0
-Tested up to: 3.5
-Stable tag: 9.0
+Requires at least: 3.4
+Tested up to: 3.6
+Stable tag: 10.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -126,6 +126,12 @@ New demo link, http://www.gopiplus.com
 
 Tested up to 3.5
 
+=Version 10.0=
+
+Tested up to 3.6
+Added some security feature.
+New admin look.
+
 == Changelog ==
 
 =Version 1.0=			
@@ -157,3 +163,9 @@ New demo link, http://www.gopiplus.com
 =Version 9.0=
 
 Tested up to 3.5
+
+=Version 10.0=
+
+Tested up to 3.6
+Added some security feature.
+New admin look.

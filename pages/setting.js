@@ -39,8 +39,14 @@ function FadeIn_submit()
 	}
 	else if(document.FadeIn_form.FadeIn_group.value=="")
 	{
-		alert("Please enter the group name. this field is used to group the announcement.")
+		alert("Please select the group name. this field is used to group the news.")
 		document.FadeIn_form.FadeIn_group.focus();
+		return false;
+	}
+	else if(document.FadeIn_form.FadeIn_status.value=="")
+	{
+		alert("Please select the display dtatus.")
+		document.FadeIn_form.FadeIn_status.focus();
 		return false;
 	}
 	else if(document.FadeIn_form.FadeIn_order.value=="")
@@ -62,14 +68,14 @@ function _FadeIn_delete(id)
 {
 	if(confirm("Do you want to delete this record?"))
 	{
-		document.FadeIn_Display.action="options-general.php?page=wp-fade-in-text-news/content-management.php&AC=DEL&DID="+id;
-		document.FadeIn_Display.submit();
+		document.frm_FadeIn_display.action="options-general.php?page=wp-fade-in-text-news&ac=del&did="+id;
+		document.frm_FadeIn_display.submit();
 	}
 }	
 
 function _FadeIn_redirect()
 {
-	window.location = "options-general.php?page=wp-fade-in-text-news/content-management.php";
+	window.location = "options-general.php?page=wp-fade-in-text-news";
 }
 
 function _FadeIn_escapeVal(textarea,replaceWith)
