@@ -113,7 +113,7 @@ New admin look.
 
 1. Tested up to 3.8
 2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
-Plugin *.po file (ssg.po) available in the languages folder. Translators Welcome.
+Plugin *.po file (FadeIn.po) available in the languages folder. Translators Welcome.
 3. Supports network multisite website (Manual table creation required).
 
 == Changelog ==
@@ -158,5 +158,5 @@ New admin look.
 
 1. Tested up to 3.8
 2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
-Plugin *.po file (ssg.po) available in the languages folder. Translators Welcome.
+Plugin *.po file (FadeIn.po) available in the languages folder. Translators Welcome.
 3. Supports network multisite website (Manual table creation required).
