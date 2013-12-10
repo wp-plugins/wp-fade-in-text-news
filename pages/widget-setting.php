@@ -2,8 +2,8 @@
   <div class="form-wrap">
     <div id="icon-edit" class="icon32 icon32-posts-post"><br>
     </div>
-    <h2><?php echo WP_FadeIn_TITLE; ?></h2>
-	<h3>Widget setting</h3>
+    <h2><?php _e('Fade in text news', 'FadeIn'); ?></h2>
+	<h3><?php _e('Widget setting', 'FadeIn'); ?></h3>
     <?php
 	$FadeIn_Title = get_option('FadeIn_Title');
 	$FadeIn_FadeOut = get_option('FadeIn_FadeOut');
@@ -15,7 +15,7 @@
 	//$FadeIn_bFadeOutt = get_option('FadeIn_bFadeOutt');
 	$FadeIn_group = get_option('FadeIn_group');
 	
-	if (@$_POST['FadeIn_submit']) 
+	if (isset($_POST['FadeIn_submit']))
 	{
 		//	Just security thingy that wordpress offers us
 		check_admin_referer('FadeIn_form_setting');
@@ -42,44 +42,45 @@
 		
 		?>
 		<div class="updated fade">
-			<p><strong>Details successfully updated.</strong></p>
+			<p><strong><?php _e('Details successfully updated.', 'FadeIn'); ?></strong></p>
 		</div>
 		<?php
 	}
 	?>
-	<script language="javascript" src="<?php echo get_option('siteurl'); ?>/wp-content/plugins/wp-fade-in-text-news/pages/setting.js"></script>
+	<script language="javascript" src="<?php echo FADEIN_PLUGIN_URL; ?>/pages/setting.js"></script>
     <form name="FadeIn_form" method="post" action="">
       
-	  <label for="tag-title">Enter widget title.</label>
+	  <label for="tag-title"><?php _e('Enter widget title.', 'FadeIn'); ?></label>
       <input name="FadeIn_Title" id="FadeIn_Title" type="text" value="<?php echo $FadeIn_Title; ?>" size="50" maxlength="150" />
       <p></p>
       
-	  <label for="tag-width">Fade Out:</label>
+	  <label for="tag-width"><?php _e('Fade Out:', 'FadeIn'); ?></label>
       <input name="FadeIn_FadeOut" id="FadeIn_FadeOut" type="text" value="<?php echo $FadeIn_FadeOut; ?>" />
-      <p>Please enter only number</p>
+      <p><?php _e('Please enter only number', 'FadeIn'); ?></p>
       
-	  <label for="tag-height">Fade In:</label>
+	  <label for="tag-height"><?php _e('Fade In:', 'FadeIn'); ?></label>
       <input name="FadeIn_FadeIn" id="FadeIn_FadeIn" type="text" value="<?php echo $FadeIn_FadeIn; ?>" />
-      <p>Please enter only number</p>
+      <p><?php _e('Please enter only number', 'FadeIn'); ?></p>
 	  
-	  <label for="tag-height">Fade:</label>
+	  <label for="tag-height"><?php _e('Fade:', 'FadeIn'); ?></label>
       <input name="FadeIn_Fade" id="FadeIn_Fade" type="text" value="<?php echo $FadeIn_Fade; ?>" />
-      <p>Please enter only number</p>
+      <p><?php _e('Please enter only number', 'FadeIn'); ?></p>
 	  
-	  <label for="tag-height">Fade Step:</label>
+	  <label for="tag-height"><?php _e('Fade Step:', 'FadeIn'); ?></label>
       <input name="FadeIn_FadeStep" id="FadeIn_FadeStep" type="text" value="<?php echo $FadeIn_FadeStep; ?>" />
-      <p>Please enter only number</p>
+      <p><?php _e('Please enter only number', 'FadeIn'); ?></p>
 	  
-	  <label for="tag-height">Fade Wait:</label>
+	  <label for="tag-height"><?php _e('Fade Wait:', 'FadeIn'); ?></label>
       <input name="FadeIn_FadeWait" id="FadeIn_FadeWait" type="text" value="<?php echo $FadeIn_FadeWait; ?>" />
-      <p>Please enter only number</p>
+      <p><?php _e('Please enter only number', 'FadeIn'); ?></p>
 	  
-	  <label for="tag-height">Select your news group</label>
+	  <label for="tag-height"><?php _e('Select your news group', 'FadeIn'); ?></label>
 	  <select name="FadeIn_group" id="FadeIn_group">
 	 	<?php
 		$sSql = "SELECT distinct(FadeIn_group) as FadeIn_group FROM `".WP_FadeIn_TABLE."` order by FadeIn_group";
 		$myDistinctData = array();
 		$arrDistinctDatas = array();
+		$selected = "";
 		$myDistinctData = $wpdb->get_results($sSql, ARRAY_A);
 		$i = 0;
 		if(count($myDistinctData) > 0)
@@ -107,14 +108,18 @@
 		}
 		?>
       </select>
-      <p>Select your group name to display the news for widget.</p>
+      <p><?php _e('Select your group name to display the news for widget.', 'FadeIn'); ?></p>
 	  
 	  <div style="height:10px;"></div>
-	  <input name="FadeIn_submit" id="FadeIn_submit" class="button-primary" value="Submit" type="submit" />
-	  <input name="publish" lang="publish" class="button-primary" onclick="_FadeIn_redirect()" value="Cancel" type="button" />
-      <input name="Help" lang="publish" class="button-primary" onclick="_FadeIn_help()" value="Help" type="button" />
+	  <input name="FadeIn_submit" id="FadeIn_submit" class="button-primary" value="<?php _e('Submit', 'FadeIn'); ?>" type="submit" />
+	  <input name="publish" lang="publish" class="button-primary" onclick="_FadeIn_redirect()" value="<?php _e('Cancel', 'FadeIn'); ?>" type="button" />
+      <input name="Help" lang="publish" class="button-primary" onclick="_FadeIn_help()" value="<?php _e('Help', 'FadeIn'); ?>" type="button" />
 	  <?php wp_nonce_field('FadeIn_form_setting'); ?>
     </form>
   </div>
-  <br /><p class="description"><?php echo WP_FadeIn_LINK; ?></p>
+  <br />
+  <p class="description">
+	<?php _e('Check official website for more information', 'FadeIn'); ?>
+	<a target="_blank" href="<?php echo FADEIN_FAV; ?>"><?php _e('click here', 'FadeIn'); ?></a>
+  </p>
 </div>

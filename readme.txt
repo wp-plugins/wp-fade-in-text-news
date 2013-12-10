@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/
 Plugin URI: http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 Tags:  fadein, fade-in, fade in, news, plugin, widget, wordpress
 Requires at least: 3.4
-Tested up to: 3.6
-Stable tag: 10.0
+Tested up to: 3.8
+Stable tag: 10.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -25,34 +25,11 @@ Everybody loves fading in and out; this plugin will create the fade-in and out e
 *	Easy to customize.  
 *	Short code available for page.
 *	Short code available for post. 
+*	Supports localization 
 
 We have three option to install and configure this fade in text plugin. 
 
 http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
-
-**My other related plugins**
-
-[WP fade in text news](http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/)	
-[Information reel](http://www.gopiplus.com/work/2011/04/16/wordpress-plugin-information-reel/)	
-[News announcement scroll](http://www.gopiplus.com/work/2011/01/01/news-announcement-scroll/)		
-[Continuous rss scrolling](http://www.gopiplus.com/work/2010/09/05/continuous-rss-scrolling/)		
-[Continuous announcement scroller](http://www.gopiplus.com/work/2010/09/04/continuous-announcement-scroller/)		
-[Vertical scroll recent post](http://www.gopiplus.com/work/2010/07/18/vertical-scroll-recent-post/)		
-[Superb slideshow gallery](http://www.gopiplus.com/work/2010/10/10/superb-slideshow-gallery/)		
-[Email newsletter](http://www.gopiplus.com/work/2010/09/25/email-newsletter/)			
-		 	
-To see my all plugin : [click here](http://www.gopiplus.com/work/plugin-list/)		
-
-Tags: announcement, fadein, fade-in, fade in, fancy, message, news, plugin, widget, wordpress	
-	
-1.0				
-First version.		
-
-2.0
-FadeIn_bFadeOutt and quote problem solved.			
-
-3.0
-Now we can add HTML content in the textarea.		
 
 == Installation ==	
 
@@ -90,9 +67,9 @@ http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 
 == Screenshots ==
 
-1. Front View.
+1. http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/	
 
-2. Admin - text management.
+2. http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 
 == Upgrade Notice ==
 
@@ -132,6 +109,13 @@ Tested up to 3.6
 Added some security feature.
 New admin look.
 
+=Version 10.1=
+
+1. Tested up to 3.8
+2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
+Plugin *.po file (ssg.po) available in the languages folder. Translators Welcome.
+3. Supports network multisite website (Manual table creation required).
+
 == Changelog ==
 
 =Version 1.0=			
@@ -169,3 +153,10 @@ Tested up to 3.5
 Tested up to 3.6
 Added some security feature.
 New admin look.
+
+=Version 10.1=
+
+1. Tested up to 3.8
+2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
+Plugin *.po file (ssg.po) available in the languages folder. Translators Welcome.
+3. Supports network multisite website (Manual table creation required).

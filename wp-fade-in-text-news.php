@@ -5,7 +5,7 @@ Plugin Name: WP fade in text news
 Plugin URI: http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 Description: Everybody loves fading in and out; this plugin will create the fade-in and out effect in the text. It is an excellent way to transition between announcements.
 Author: Gopi.R
-Version: 10.0
+Version: 10.1
 Author URI: http://www.gopiplus.com/work/
 Donate link: http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 Tags: Wordpress, plugin, widget, fadein, fade-in, fade in, announcement, text
@@ -15,10 +15,19 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 global $wpdb, $wp_version;
 define("WP_FadeIn_TABLE", $wpdb->prefix . "FadeInText_plugin");
-define("WP_FadeIn_UNIQUE_NAME", "FadeIn");
-define("WP_FadeIn_TITLE", "WP fade in text news");
-define('WP_FadeIn_LINK', 'Check official website for more information <a target="_blank" href="http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/">click here</a>');
-define('WP_FadeIn_FAV', 'http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/');
+define('FADEIN_FAV', 'http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/');
+
+if ( ! defined( 'FADEIN_BASENAME' ) )
+	define( 'FADEIN_BASENAME', plugin_basename( __FILE__ ) );
+	
+if ( ! defined( 'FADEIN_PLUGIN_NAME' ) )
+	define( 'FADEIN_PLUGIN_NAME', trim( dirname( FADEIN_BASENAME ), '/' ) );
+	
+if ( ! defined( 'FADEIN_PLUGIN_URL' ) )
+	define( 'FADEIN_PLUGIN_URL', WP_PLUGIN_URL . '/' . FADEIN_PLUGIN_NAME );
+	
+if ( ! defined( 'FADEIN_ADMIN_URL' ) )
+	define( 'FADEIN_ADMIN_URL', get_option('siteurl') . '/wp-admin/options-general.php?page=wp-fade-in-text-news' );
 
 function FadeIn() 
 {
@@ -89,7 +98,7 @@ function FadeIn_add_javascript_files()
 {
 	if (!is_admin())
 	{
-		wp_enqueue_script( 'wp-fade-in-text-news', get_option('siteurl').'/wp-content/plugins/wp-fade-in-text-news/wp-fade-in-text-news.js');
+		wp_enqueue_script( 'wp-fade-in-text-news', FADEIN_PLUGIN_URL.'/wp-fade-in-text-news.js');
 	}	
 }
 
@@ -109,7 +118,7 @@ function FadeIn_install()
 			  `FadeIn_status` char(3) NOT NULL default 'No',
 			  `FadeIn_group` VARCHAR( 100 ) NOT NULL,
 			  `FadeIn_date` datetime NOT NULL default '0000-00-00 00:00:00',
-			  PRIMARY KEY  (`FadeIn_id`) )
+			  PRIMARY KEY  (`FadeIn_id`) ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 			");
 		$iIns = "INSERT INTO `". WP_FadeIn_TABLE . "` (`FadeIn_text`,`FadeIn_link`, `FadeIn_order`, `FadeIn_status`, `FadeIn_group`, `FadeIn_date`)"; 
 		$sSql = $iIns . "VALUES ('Lorem Ipsum is simply dummy text of the printing and typesetting industry.','#', '1', 'YES', 'SAMPLE', '0000-00-00 00:00:00');";
@@ -128,7 +137,6 @@ function FadeIn_install()
 	add_option('FadeIn_FadeOut', "255");
 	add_option('FadeIn_FadeIn', "0");
 	add_option('FadeIn_Fade', "0");
-	
 	add_option('FadeIn_FadeStep', "3");
 	add_option('FadeIn_FadeWait', "3000");
 	add_option('FadeIn_bFadeOutt', "true");
@@ -137,8 +145,11 @@ function FadeIn_install()
 
 function FadeIn_control() 
 {
-	echo '<p>To change the setting <a href="options-general.php?page=wp-fade-in-text-news">click here</a></p>';
-	echo WP_FadeIn_LINK;
+	echo '<p><b>';
+	 _e('Fade in text news', 'FadeIn');
+	echo '.</b> ';
+	_e('Check official website for more information', 'FadeIn');
+	?> <a target="_blank" href="<?php echo FADEIN_FAV; ?>"><?php _e('click here', 'FadeIn'); ?></a></p><?php
 }
 
 function FadeIn_widget($args) 
@@ -173,7 +184,6 @@ function FadeIn_admin_options()
 }
 
 add_shortcode( 'fadein-text', 'FadeIn_Show_shortcode' );
-
 function FadeIn_Show_shortcode( $atts ) 
 {
 	global $wpdb;
@@ -208,7 +218,6 @@ function FadeIn_Show_shortcode( $atts )
 	{
 		$tblgroup = $atts['group'];
 	}
-	
 	
 	$sSql = "select FadeIn_text,FadeIn_link from ".WP_FadeIn_TABLE." where FadeIn_status='YES'";
 	
@@ -253,7 +262,7 @@ function FadeIn_Show_shortcode( $atts )
 	}
 	else
 	{
-		$JaFade = "No record found for this short code";
+		$JaFade = __('No record found for this short code', 'FadeIn');
 	}
 	return $JaFade;
 }
@@ -262,8 +271,9 @@ function FadeIn_add_to_menu()
 {
 	if (is_admin()) 
 	{
-		add_options_page('Fade in text news', 'Fade in text news', 'manage_options', 'wp-fade-in-text-news', 'FadeIn_admin_options' );
-		//add_options_page('Fade in text news', '', 'manage_options', "wp-fade-in-text-news/content-management.php",'' );
+		add_options_page(__('Fade in text news', 'FadeIn'), 
+							__('Fade in text news', 'FadeIn'), 'manage_options', 
+									'wp-fade-in-text-news', 'FadeIn_admin_options' );
 	}
 }
 
@@ -271,12 +281,12 @@ function FadeIn_init()
 {
 	if(function_exists('wp_register_sidebar_widget')) 
 	{
-		wp_register_sidebar_widget('fade-in-text-news', 'Fade in text news', 'FadeIn_widget');
+		wp_register_sidebar_widget('fade-in-text-news', __('Fade in text news', 'FadeIn'), 'FadeIn_widget');
 	}
 	
 	if(function_exists('wp_register_widget_control')) 
 	{
-		wp_register_widget_control('fade-in-text-news', array('Fade in text news', 'widgets'), 'FadeIn_control');
+		wp_register_widget_control('fade-in-text-news', array(__('Fade in text news', 'FadeIn'), 'widgets'), 'FadeIn_control');
 	} 
 }
 
@@ -290,6 +300,12 @@ function FadeIn_deactivation()
 	delete_option('FadeIn_bFadeOutt');
 }
 
+function FadeIn_textdomain() 
+{
+	  load_plugin_textdomain( 'FadeIn', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
+
+add_action('plugins_loaded', 'FadeIn_textdomain');
 add_action('admin_menu', 'FadeIn_add_to_menu');
 add_action('wp_enqueue_scripts', 'FadeIn_add_javascript_files');
 add_action("plugins_loaded", "FadeIn_init");
