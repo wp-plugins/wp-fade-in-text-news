@@ -1,7 +1,7 @@
 === WP fade in text news ===
 Contributors: www.gopiplus.com, gopiplus
 Donate link: http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
-Author URI: http://www.gopiplus.com/work/
+Author URI: http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 Plugin URI: http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 Tags:  fadein, fade-in, fade in, news, plugin, widget, wordpress
 Requires at least: 3.4
@@ -28,8 +28,6 @@ Everybody loves fading in and out; this plugin will create the fade-in and out e
 *	Supports localization 
 
 We have three option to install and configure this fade in text plugin. 
-
-http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 
 == Installation ==	
 
