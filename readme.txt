@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/
 Plugin URI: http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 Tags:  fadein, fade-in, fade in, news, plugin, widget, wordpress
 Requires at least: 3.4
-Tested up to: 3.8
-Stable tag: 10.1
+Tested up to: 3.9
+Stable tag: 10.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -67,9 +67,9 @@ http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 
 == Screenshots ==
 
-1. http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/	
+1. Front Page Screen. http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/	
 
-2. http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
+2. Admin Screen. http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 
 == Upgrade Notice ==
 
@@ -116,6 +116,11 @@ New admin look.
 Plugin *.po file (FadeIn.po) available in the languages folder. Translators Welcome.
 3. Supports network multisite website (Manual table creation required).
 
+=Version 10.2=
+
+1. Tested up to 3.9
+2. Small security update.
+
 == Changelog ==
 
 =Version 1.0=			
@@ -160,3 +165,8 @@ New admin look.
 2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
 Plugin *.po file (FadeIn.po) available in the languages folder. Translators Welcome.
 3. Supports network multisite website (Manual table creation required).
+
+=Version 10.2=
+
+1. Tested up to 3.9
+2. Small security update.
