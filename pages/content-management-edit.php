@@ -39,7 +39,8 @@ else
 		'FadeIn_status' => $data['FadeIn_status'],
 		'FadeIn_group' => $data['FadeIn_group'],
 		'FadeIn_link' => $data['FadeIn_link'],
-		'FadeIn_order' => $data['FadeIn_order']
+		'FadeIn_order' => $data['FadeIn_order'],
+		'FadeIn_date' => $data['FadeIn_date']
 	);
 }
 // Form submitted, check the data
@@ -59,6 +60,7 @@ if (isset($_POST['FadeIn_form_submit']) && $_POST['FadeIn_form_submit'] == 'yes'
 	$form['FadeIn_order'] = isset($_POST['FadeIn_order']) ? $_POST['FadeIn_order'] : '';
 	$form['FadeIn_status'] = isset($_POST['FadeIn_status']) ? $_POST['FadeIn_status'] : '';
 	$form['FadeIn_group'] = isset($_POST['FadeIn_group']) ? $_POST['FadeIn_group'] : '';
+	$form['FadeIn_date'] = isset($_POST['FadeIn_date']) ? $_POST['FadeIn_date'] : '';
 
 	//	No errors found, we can add this Group to the table
 	if ($FadeIn_error_found == FALSE)
@@ -69,10 +71,11 @@ if (isset($_POST['FadeIn_form_submit']) && $_POST['FadeIn_form_submit'] == 'yes'
 				`FadeIn_status` = %s,
 				`FadeIn_link` = %s,
 				`FadeIn_order` = %d,
-				`FadeIn_group` = %s
+				`FadeIn_group` = %s,
+				`FadeIn_date` = %s
 				WHERE FadeIn_id = %d
 				LIMIT 1",
-				array($form['FadeIn_text'], $form['FadeIn_status'], $form['FadeIn_link'], $form['FadeIn_order'], $form['FadeIn_group'], $did)
+				array($form['FadeIn_text'], $form['FadeIn_status'], $form['FadeIn_link'], $form['FadeIn_order'], $form['FadeIn_group'], $form['FadeIn_date'], $did)
 			);
 		$wpdb->query($sSql);
 		
@@ -156,6 +159,11 @@ if ($FadeIn_error_found == FALSE && strlen($FadeIn_success) > 0)
 	  <label for="tag-link"><?php _e('Display order', 'FadeIn'); ?></label>
       <input name="FadeIn_order" type="text" id="FadeIn_order" value="<?php echo $form["FadeIn_order"]; ?>" maxlength="2" />
       <p><?php _e('Please enter news display order in this box. Only number', 'FadeIn'); ?></p>
+	  
+	  <label for="tag-date"><?php _e('Expiration date', 'FadeIn'); ?></label>
+      <input name="FadeIn_date" type="text" id="FadeIn_date" value="<?php echo substr($form['FadeIn_date'],0,10); ?>" maxlength="10" />
+      <p><?php _e('Please enter the expiration date in this format YYYY-MM-DD', 'FadeIn'); ?></p>
+	  
       <input name="FadeIn_id" id="FadeIn_id" type="hidden" value="">
       <input type="hidden" name="FadeIn_form_submit" value="yes"/>
       <p class="submit">

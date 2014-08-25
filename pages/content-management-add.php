@@ -11,7 +11,8 @@ $form = array(
 	'FadeIn_status' => '',
 	'FadeIn_group' => '',
 	'FadeIn_link' => '',
-	'FadeIn_order' => ''
+	'FadeIn_order' => '',
+	'FadeIn_date' => ''
 );
 
 // Form submitted, check the data
@@ -31,15 +32,16 @@ if (isset($_POST['FadeIn_form_submit']) && $_POST['FadeIn_form_submit'] == 'yes'
 	$form['FadeIn_order'] = isset($_POST['FadeIn_order']) ? $_POST['FadeIn_order'] : '';
 	$form['FadeIn_status'] = isset($_POST['FadeIn_status']) ? $_POST['FadeIn_status'] : '';
 	$form['FadeIn_group'] = isset($_POST['FadeIn_group']) ? $_POST['FadeIn_group'] : '';
+	$form['FadeIn_date'] = isset($_POST['FadeIn_date']) ? $_POST['FadeIn_date'] : '';
 
 	//	No errors found, we can add this Group to the table
 	if ($FadeIn_error_found == FALSE)
 	{
 		$sql = $wpdb->prepare(
 			"INSERT INTO `".WP_FadeIn_TABLE."`
-			(`FadeIn_text`,`FadeIn_link`, `FadeIn_order`, `FadeIn_status`, `FadeIn_group`)
-			VALUES(%s, %s, %d, %s, %s)",
-			array($form['FadeIn_text'], $form['FadeIn_link'], $form['FadeIn_order'], $form['FadeIn_status'], $form['FadeIn_group'])
+			(`FadeIn_text`,`FadeIn_link`, `FadeIn_order`, `FadeIn_status`, `FadeIn_group`, `FadeIn_date`)
+			VALUES(%s, %s, %d, %s, %s, %s)",
+			array($form['FadeIn_text'], $form['FadeIn_link'], $form['FadeIn_order'], $form['FadeIn_status'], $form['FadeIn_group'], $form['FadeIn_date'])
 		);
 		$wpdb->query($sql);
 		
@@ -51,7 +53,8 @@ if (isset($_POST['FadeIn_form_submit']) && $_POST['FadeIn_form_submit'] == 'yes'
 			'FadeIn_status' => '',
 			'FadeIn_group' => '',
 			'FadeIn_link' => '',
-			'FadeIn_order' => ''
+			'FadeIn_order' => '',
+			'FadeIn_date' => ''
 		);
 	}
 }
@@ -117,13 +120,18 @@ if ($FadeIn_error_found == FALSE && strlen($FadeIn_success) > 0)
       <label for="tag-display-status"><?php _e('Display status', 'FadeIn'); ?></label>
       <select name="FadeIn_status" id="FadeIn_status">
         <option value=''>Select</option>
-		<option value='YES'>Yes</option>
+		<option value='YES' selected="selected">Yes</option>
         <option value='NO'>No</option>
       </select>
 	  <p><?php _e('Do you want to show this message?', 'FadeIn'); ?></p>
 	  <label for="tag-link"><?php _e('Display order', 'FadeIn'); ?></label>
       <input name="FadeIn_order" type="text" id="FadeIn_order" value="" maxlength="2" />
       <p><?php _e('Please enter news display order in this box. Only number', 'FadeIn'); ?></p>
+	  
+	  <label for="tag-date"><?php _e('Expiration date', 'FadeIn'); ?></label>
+      <input name="FadeIn_date" type="text" id="FadeIn_date" value="9999-12-30" maxlength="10" />
+      <p><?php _e('Please enter the expiration date in this format YYYY-MM-DD <br /> 9999-12-30 : Is equal to no expire.', 'FadeIn'); ?></p>
+	  
       <input name="FadeIn_id" id="FadeIn_id" type="hidden" value="">
       <input type="hidden" name="FadeIn_form_submit" value="yes"/>
       <p class="submit">

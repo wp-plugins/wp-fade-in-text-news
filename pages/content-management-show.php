@@ -67,6 +67,7 @@ if (isset($_POST['frm_FadeIn_display']) && $_POST['frm_FadeIn_display'] == 'yes'
             <th scope="col"><?php _e('Group/Type', 'FadeIn'); ?></th>
 			<th scope="col"><?php _e('Display Status', 'FadeIn'); ?></th>
 			<th scope="col"><?php _e('Order', 'FadeIn'); ?></th>
+			<th scope="col"><?php _e('Expiration', 'FadeIn'); ?></th>
           </tr>
         </thead>
 		<tfoot>
@@ -76,6 +77,7 @@ if (isset($_POST['frm_FadeIn_display']) && $_POST['frm_FadeIn_display'] == 'yes'
             <th scope="col"><?php _e('Group/Type', 'FadeIn'); ?></th>
 			<th scope="col"><?php _e('Display Status', 'FadeIn'); ?></th>
 			<th scope="col"><?php _e('Order', 'FadeIn'); ?></th>
+			<th scope="col"><?php _e('Expiration', 'FadeIn'); ?></th>
           </tr>
         </tfoot>
 		<tbody>
@@ -102,6 +104,7 @@ if (isset($_POST['frm_FadeIn_display']) && $_POST['frm_FadeIn_display'] == 'yes'
 						<td><?php echo esc_html(stripslashes($data['FadeIn_group'])); ?></td>
 						<td><?php echo $data['FadeIn_status']; ?></td>
 						<td><?php echo $data['FadeIn_order']; ?></td>
+						<td><?php echo substr($data['FadeIn_date'],0,10); ?></td>
 					</tr>
 					<?php 
 					$i = $i+1; 
@@ -109,7 +112,7 @@ if (isset($_POST['frm_FadeIn_display']) && $_POST['frm_FadeIn_display'] == 'yes'
 			}
 			else
 			{
-				?><tr><td colspan="5" align="center"><?php _e('No records available', 'FadeIn'); ?></td></tr><?php 
+				?><tr><td colspan="6" align="center"><?php _e('No records available', 'FadeIn'); ?></td></tr><?php 
 			}
 			?>
 		</tbody>

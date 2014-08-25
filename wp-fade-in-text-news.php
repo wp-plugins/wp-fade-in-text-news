@@ -4,7 +4,7 @@ Plugin Name: WP fade in text news
 Plugin URI: http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 Description: Everybody loves fading in and out; this plugin will create the fade-in and out effect in the text. It is an excellent way to transition between announcements.
 Author: Gopi Ramasamy
-Version: 10.2
+Version: 10.3
 Author URI: http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 Donate link: http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 Tags: fadein, fade-in, fade in, news, plugin, widget, wordpress
@@ -47,6 +47,7 @@ function FadeIn()
 	if(!is_numeric($FadeIn_FadeWait)){ $FadeIn_FadeWait = 3000; } 
 	
 	$sSql = "select FadeIn_text,FadeIn_link from ".WP_FadeIn_TABLE." where FadeIn_status='YES'";
+	$sSql = $sSql . " and (`FadeIn_date` >= NOW() or `FadeIn_date` = '0000-00-00')";
 	if($FadeIn_group <> "")
 	{
 		$sSql = $sSql . " and FadeIn_group='".$FadeIn_group."'";
@@ -70,27 +71,26 @@ function FadeIn()
 			}
 			$FadeIn_Count = $FadeIn_Count + 1;
 		}
-	}
+		?>
+		<script type="text/javascript" language="javascript">
+		function FadeIn_SetFadeLinks() 
+		{
+			<?php echo $FadeIn_Arr ?>
+		}
 	
-	?>
-    <script type="text/javascript" language="javascript">
-	function FadeIn_SetFadeLinks() 
-	{
-		<?php echo $FadeIn_Arr ?>
+		var FadeIn_FadeOut = <?php echo $FadeIn_FadeOut; ?>;
+		var FadeIn_FadeIn = <?php echo $FadeIn_FadeIn; ?>;
+		var FadeIn_Fade = <?php echo $FadeIn_Fade; ?>;
+		var FadeIn_FadeStep = <?php echo $FadeIn_FadeStep; ?>;
+		var FadeIn_FadeWait = <?php echo $FadeIn_FadeWait; ?>;
+		var FadeIn_bFadeOutt = <?php echo $FadeIn_bFadeOutt; ?>;
+	
+		</script>
+		<div id="FadeIn_CSS" style="padding:5px;">
+		<a href="#" id="FadeIn_Link"><?php echo $FadeIn_text; ?></a>
+		</div>
+		<?php
 	}
-
-	var FadeIn_FadeOut = <?php echo $FadeIn_FadeOut; ?>;
-	var FadeIn_FadeIn = <?php echo $FadeIn_FadeIn; ?>;
-	var FadeIn_Fade = <?php echo $FadeIn_Fade; ?>;
-	var FadeIn_FadeStep = <?php echo $FadeIn_FadeStep; ?>;
-	var FadeIn_FadeWait = <?php echo $FadeIn_FadeWait; ?>;
-	var FadeIn_bFadeOutt = <?php echo $FadeIn_bFadeOutt; ?>;
-
-	</script>
-    <div id="FadeIn_CSS" style="padding:5px;">
-	<a href="#" id="FadeIn_Link"><?php echo $FadeIn_text; ?></a>
-	</div>
-    <?php	
 }
 
 function FadeIn_add_javascript_files() 
@@ -131,7 +131,6 @@ function FadeIn_install()
 		$sSql = $iIns . "VALUES ('Lorem Ipsum is simply dummy text of the printing and typesetting industry.','#', '5', 'YES', 'WIDGET', '0000-00-00 00:00:00');";
 		$wpdb->query($sSql);
 	}
-	
 	add_option('FadeIn_Title', "Text Fadein plugin");
 	add_option('FadeIn_FadeOut', "255");
 	add_option('FadeIn_FadeIn', "0");
@@ -219,7 +218,7 @@ function FadeIn_Show_shortcode( $atts )
 	}
 	
 	$sSql = "select FadeIn_text,FadeIn_link from ".WP_FadeIn_TABLE." where FadeIn_status='YES'";
-	
+	$sSql = $sSql . " and (`FadeIn_date` >= NOW() or `FadeIn_date` = '0000-00-00')";
 	if($tblgroup <> "")
 	{
 		$sSql = $sSql . " and FadeIn_group='".$tblgroup."'";
@@ -261,7 +260,7 @@ function FadeIn_Show_shortcode( $atts )
 	}
 	else
 	{
-		$JaFade = __('No record found for this short code', 'FadeIn');
+		//$JaFade = __('No record found for this short code', 'FadeIn');
 	}
 	return $JaFade;
 }

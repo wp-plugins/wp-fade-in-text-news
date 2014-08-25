@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-t
 Plugin URI: http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 Tags:  fadein, fade-in, fade in, news, plugin, widget, wordpress
 Requires at least: 3.4
-Tested up to: 3.9
-Stable tag: 10.2
+Tested up to: 4.0
+Stable tag: 10.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -27,11 +27,9 @@ Everybody loves fading in and out; this plugin will create the fade-in and out e
 *	Short code available for post. 
 *	Supports localization 
 
-We have three option to install and configure this fade in text plugin. 
+We have three options to install and configure this fade in text plugin. 
 
 == Installation ==	
-
-**Installation Instruction & Configuration**  	
 
 **Method 1**	
 
@@ -47,7 +45,7 @@ We have three option to install and configure this fade in text plugin.
 
 **Configuration**
 
-We have 3 option to configure this plugin [click here](http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/)  to see more info.	 	
+We have 3 option to configure this plugin [click here](http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/) to see more info.	 	
 
 == Frequently Asked Questions ==
 
@@ -58,10 +56,7 @@ Q4. How to group the announcement?
 Q6. How to change the fade-in text CSS?		
 Q7. My question is not listed in this FAQ?		
 
-Click the below link to see answer for all questions!			
 More info : [click to go](http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/)		
-
-http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/	
 
 == Screenshots ==
 
@@ -71,100 +66,110 @@ http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 
 == Upgrade Notice ==
 
-=Version 1.0=			
+= Version 1.0 =			
 					
 First version
 
-=Version 2.0=
+= Version 2.0 =
 
 FadeIn_bFadeOutt and quote problem solved.
 
-=Version 3.0=
+= Version 3.0 =
 			
 Now we can add HTML content in the textarea...
 
-=Version 6.0=
+= Version 6.0 =
 
 Tested up to 3.4
 
-=Version 7.0=
+= Version 7.0 =
 
 Tested up to 3.4.1
 JavaScript loaded by using the wp_enqueue_scripts hook (instead of the init hook)
 Slight change in the short code, Please find the new short code for your gallery
 
-=Version 8.0=
+= Version 8.0 =
 
 New demo link, http://www.gopiplus.com
 
-=Version 9.0=
+= Version 9.0 =
 
 Tested up to 3.5
 
-=Version 10.0=
+= Version 10.0 =
 
 Tested up to 3.6
 Added some security feature.
 New admin look.
 
-=Version 10.1=
+= Version 10.1 =
 
 1. Tested up to 3.8
 2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
 Plugin *.po file (FadeIn.po) available in the languages folder. Translators Welcome.
 3. Supports network multisite website (Manual table creation required).
 
-=Version 10.2=
+= Version 10.2 =
 
 1. Tested up to 3.9
 2. Small security update.
+
+= Version 10.3 =
+
+1. Tested up to 4.0
+2. Added option to enter expiration date.
 
 == Changelog ==
 
-=Version 1.0=			
+= Version 1.0 =			
 					
 First version
 
-=Version 2.0=
+= Version 2.0 =
 
 FadeIn_bFadeOutt and quote problem solved.
 
-=Version 3.0=
+= Version 3.0 =
 			
 Now we can add HTML content in the textarea...
 
-=Version 6.0=
+= Version 6.0 =
 
 Tested up to 3.4
 
-=Version 7.0=
+= Version 7.0 =
 
 Tested up to 3.4.1
 JavaScript loaded by using the wp_enqueue_scripts hook (instead of the init hook)
 Slight change in the short code, Please find the new short code for your gallery
 
-=Version 8.0=
+= Version 8.0 =
 
 New demo link, http://www.gopiplus.com
 
-=Version 9.0=
+= Version 9.0 =
 
 Tested up to 3.5
 
-=Version 10.0=
+= Version 10.0 =
 
 Tested up to 3.6
 Added some security feature.
 New admin look.
 
-=Version 10.1=
+= Version 10.1 =
 
 1. Tested up to 3.8
 2. Now this plugin supports localization (or internationalization). i.e. option to translate into other languages. 
 Plugin *.po file (FadeIn.po) available in the languages folder. Translators Welcome.
 3. Supports network multisite website (Manual table creation required).
 
-=Version 10.2=
+= Version 10.2 =
 
 1. Tested up to 3.9
 2. Small security update.
+
+= Version 10.3 =
+
+1. Tested up to 4.0
+2. Added option to enter expiration date.
