@@ -4,7 +4,7 @@ Plugin Name: WP fade in text news
 Plugin URI: http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 Description: Everybody loves fading in and out; this plugin will create the fade-in and out effect in the text. It is an excellent way to transition between announcements.
 Author: Gopi Ramasamy
-Version: 10.4
+Version: 10.5
 Author URI: http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 Donate link: http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 Tags: fadein, fade-in, fade in, news, plugin, widget, wordpress

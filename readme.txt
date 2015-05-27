@@ -5,8 +5,8 @@ Author URI: http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-t
 Plugin URI: http://www.gopiplus.com/work/2011/04/22/wordpress-plugin-wp-fadein-text-news/
 Tags:  fadein, fade-in, fade in, news, plugin, widget, wordpress
 Requires at least: 3.4
-Tested up to: 4.1
-Stable tag: 10.4
+Tested up to: 4.2.2
+Stable tag: 10.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -123,6 +123,10 @@ Plugin *.po file (FadeIn.po) available in the languages folder. Translators Welc
 
 1. Tested up to 4.1
 
+= Version 10.5 =
+
+1. Tested up to 4.2.2
+
 == Changelog ==
 
 = Version 1.0 =			
@@ -181,3 +185,7 @@ Plugin *.po file (FadeIn.po) available in the languages folder. Translators Welc
 = Version 10.4 =
 
 1. Tested up to 4.1
+
+= Version 10.5 =
+
+1. Tested up to 4.2.2
